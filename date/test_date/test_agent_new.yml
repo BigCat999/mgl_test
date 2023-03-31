@@ -1,0 +1,54 @@
+#test_agent_info:
+#  # 接口地址  入参  描述
+#  # api_url  data  desc
+#  - [ '/api/agent/agentRegister/registerBack',
+#    '{
+#          "address":"213",
+#          "agentLevel":5,
+#          "agentName":"jyx109",
+#          "aliId":"1001",
+#          "area":"",
+#          "city":"",
+#          "countryId":11,
+#          "idCardBackImg":"https://mageline-vip-uat.mageline.cn/image/5cd1e7ab-a637-4be6-b61f-a41d6579529f.jpg",
+#          "idCardFontImg":"https://mageline-vip-uat.mageline.cn/image/c61d41f0-b015-4bd2-abc2-619e40c608aa.jpg",
+#          "idCardHandImg":"https://agent-auth-img.oss-cn-shanghai.aliyuncs.com/2022-12-20/6pfusu4veigp9d2x27je.png?Expires=3249445127&OSSAccessKeyId=LTAI5tQ5GuTS94tMfPF5uXM6&Signature=UkuqmZvJz61qMOAh5hYCkf%2Besns%3D",
+#          "idCardOcrId":"",
+#          "idCodeNo":"202212200109",
+#          "idType":6,
+#          "parentId":28,
+#          "province":"别德马",
+#          "signType":2,
+#          "telPhone":"187000100109",
+#          "wechat":"q1220109",
+#          "remark":"1002",
+#          "areaCode":"54"
+#      }',
+#    '经销商列表查询'
+#  ]
+
+- name: $ddt{name}
+  request:
+     method: get
+#    base_url: ${read_config_yaml(base_url)}
+#    url: /cgi-bin/token
+#    headers: null
+#    params:
+#      appid: $ddt{appid}
+#      secret: $ddt{secret}
+#      grant_type: $ddt{grant_type}
+#  extract:
+#    access_token: '"access_token":"(.*?)"'
+#    #    access_token: $.access_token
+#    expires_in: $.expires_in
+#  parameterize:
+#    - [ 'name', 'appid', 'secret', 'grant_type', 'assert_str' ]
+#    - [ '成功获取token鉴权码','wx74a8627810cfa308','e40a02f9d79a8097df497e6aaf93ab80','client_credential','access_token' ]
+#  #    - [ '检查appid为空',100,'e40a02f9d79a8097df497e6aaf93ab80','client_credential',41002 ]
+#  #    - [ '检查secret为空1','wx74a8627810cfa308','','client_credential',41004 ]
+#  validate:
+#    - codes: { status_code: 200 }
+#    - contains: $ddt{assert_str}
+#    - equals: { expires_in: 7200 }
+#    - contains: access_token
+#    - db_equals: { "select crete_time from user": expires_in }
