@@ -6,13 +6,18 @@ from appium.webdriver.extensions.android.nativekey import AndroidKey
 from time import time, sleep
 from lib.app_public import *
 from lib.config import *
+from Page.JXS_APP_PaGe import *
 
-class tc006001():
 
-    name = 'vcode登录1'
+
+
+class zd00001():
+
+    name = '下单'
 
     def teststeps(self):
-        login(configs.url, '123321')
+        login()
+
         wd = GSTORE['wd']
         sleep(2)
         tishi = wd.find_element(AppiumBy.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout'

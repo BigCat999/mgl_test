@@ -2,11 +2,30 @@ from time import sleep
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.webdriver.extensions.android.nativekey import AndroidKey
-
+import yaml
 from selenium.webdriver.common.by import By
 from lib.config import configs
 from hytest import *
 from Page.LoginPage import login_page
+
+
+
+def get_data(flod_name, case_name):
+    """
+        存在乱码问题
+       :param flod_name: 文件名称
+       :param case_name: case名称,匹配yaml文件中的接口(cese)信息
+       :return: 接口(cese)信息
+       """
+    try:
+        BASE_PATH = r'C:\Users\Mageline\PycharmProjects\mgl_test\date\test_date'
+        filepath = os.path.join(BASE_PATH, 'test_data', flod_name + '.yml')
+        with open(filepath, 'r', encoding='gbk', errors='ignore') as f:
+            data = yaml.load(f.read(), Loader=yaml.SafeLoader)
+            final_data = data[case_name]
+        return final_data
+    except Exception as e:
+        print(e)
 
 
 def app_lianjie(appPackage, appActivity):
@@ -27,7 +46,7 @@ def app_lianjie(appPackage, appActivity):
     return desired_caps
 
 
-def login(url=configs.url, vcode=configs.vcode):
+def login():
     desired_caps = app_lianjie('com.mageline.agent', '.ui.MainActivity')
     # desired_caps = app_lianjie('com.tencent.mm', '.ui.LauncherUI')
     wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
@@ -37,23 +56,12 @@ def login(url=configs.url, vcode=configs.vcode):
     #跳过开平动画
     sleep(1)
     wd.tap([(929, 161)], 100)
-    # wd.find_element(AppiumBy.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget'
-    #                                 '.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View'
-    #                                 '/android.view.View/android.view.View/android.view.View/android.view.View['
-    #                                 '1]/android.widget.EditText[1]').click()
-    # wd.find_element(AppiumBy.XPATH, '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget'
-    #                                 '.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View'
-    #                                 '/android.view.View/android.view.View/android.view.View/android.view.View['
-    #                                 '1]/android.widget.EditText[1]').send_keys('123123')
     #输入账号
-    loginpage.shuruzhanghao('18090930111')
+    loginpage.shuruzhanghao('15835226899')
     # 输入密码
     loginpage.shurumima('123456')
     #勾选协议
     loginpage.gouxuanxieyi()
     # # 点击登录
     loginpage.dianjidenglu()
-    sleep(10)
-
-
-login()
+    sleep(3)
