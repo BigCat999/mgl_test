@@ -14,13 +14,18 @@ class Page(object):
 
     def find_element(self, *loc):
         print(*loc)
-        return self.wd.find_element(*loc)
+        a = self.wd.find_element(*loc)
+        return a
 
     def find_elements(self, *loc):
         print(*loc)
         return self.wd.find_elements(*loc)
 
-    def text(self, *loc):
+    def gettext(self, loc):
+        b = self.find_element(*loc)
+        c = b.text
+        print('cs222'+c)
+        print('cs333'+self.find_element(*loc).text)
         return self.find_element(*loc).text
 
     def get_attribute(self, attribute, loc):

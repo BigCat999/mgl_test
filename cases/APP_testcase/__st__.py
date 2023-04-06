@@ -4,8 +4,11 @@ from lib.app_public import *
 from Page import ShangPinXiangQing
 
 
-# def suite_setup():
+
+def suite_setup():
+    pass
 #     login()
+
 #     shangcheng = Page.
 #     shangpin = Page.ShangCheng.ShangCheng_page()
 #     gouwuche = Page.

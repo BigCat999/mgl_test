@@ -6,7 +6,7 @@ import yaml
 from selenium.webdriver.common.by import By
 from lib.config import configs
 from hytest import *
-from Page.LoginPage import login_page
+from Page import JXS_APP_PaGe
 
 
 
@@ -52,16 +52,18 @@ def login():
     wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
     GSTORE['wd'] = wd
     wd.implicitly_wait(8)
-    loginpage = login_page(wd)
+    loginpage = JXS_APP_PaGe.login_page(wd)
     #跳过开平动画
     sleep(1)
     wd.tap([(929, 161)], 100)
-    #输入账号
-    loginpage.shuruzhanghao('15835226899')
-    # 输入密码
-    loginpage.shurumima('123456')
-    #勾选协议
-    loginpage.gouxuanxieyi()
-    # # 点击登录
-    loginpage.dianjidenglu()
-    sleep(3)
+    hot_search = wd.find_elements(AppiumBy.CLASS_NAME, 'android.widget.Button')
+    if hot_search:
+        #输入账号
+        loginpage.shuruzhanghao('15835226899')
+        # 输入密码
+        loginpage.shurumima('123456')
+        #勾选协议
+        loginpage.gouxuanxieyi()
+        # # 点击登录
+        loginpage.dianjidenglu()
+        sleep(3)
